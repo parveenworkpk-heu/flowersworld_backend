@@ -34,6 +34,18 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Flowers World API is running (file-based storage)' });
 });
 
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'Flowers World API is running. Use /api/* endpoints.' });
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not found' });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
