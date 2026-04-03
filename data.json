@@ -15,7 +15,7 @@
       "_id": "user_admin",
       "name": "Admin",
       "email": "admin@flowersworld.com",
-      "password": "$2a$12$BHdvsyVIZBNOGhDtctFSPeCr4RnCBI9gB.u8TgIEyxdir1l/9JDq.",
+      "password": "$2a$12$bTsZIqhzitiRxaSXonva7eiPVhHjIgu.UnEKkDX7u6NSzmvIApJAy",
       "phone": "9876543210",
       "role": "admin",
       "isBlocked": false,
