@@ -13,7 +13,7 @@ const readData = () => {
       return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
     }
   } catch (e) {}
-  return { users: [], products: [], orders: [] };
+  return { users: [], products: [], orders: [], contactSubmissions: [] };
 };
 
 const writeData = (data) => {
@@ -104,6 +104,22 @@ router.patch('/orders/:id/status', adminAuth, (req, res) => {
   }
   writeData(data);
   res.json(order);
+});
+
+router.get('/contact-submissions', adminAuth, (req, res) => {
+  const data = readData();
+  res.json({ submissions: data.contactSubmissions || [], total: (data.contactSubmissions || []).length, totalPages: 1, currentPage: 1 });
+});
+
+router.delete('/contact-submissions/:id', adminAuth, (req, res) => {
+  const data = readData();
+  const index = (data.contactSubmissions || []).findIndex(s => s._id === req.params.id);
+  if (index === -1) {
+    return res.status(404).json({ message: 'Submission not found' });
+  }
+  data.contactSubmissions.splice(index, 1);
+  writeData(data);
+  res.json({ message: 'Submission deleted successfully' });
 });
 
 module.exports = router;

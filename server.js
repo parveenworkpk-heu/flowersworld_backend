@@ -9,6 +9,7 @@ const productRoutes = require('./routes/products');
 const orderRoutes = require('./routes/orders');
 const cartRoutes = require('./routes/cart');
 const adminRoutes = require('./routes/admin');
+const contactRoutes = require('./routes/contact');
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/contact', contactRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Flowers World API is running (file-based storage)' });
